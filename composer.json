@@ -24,7 +24,10 @@
     "yiisoft/yii2-bootstrap": "*",
     "yiisoft/yii2-swiftmailer": "*",
     "yiisoft/yii2-jui": "*",
-    "fortawesome/font-awesome": "v4.2.0"
+    "fortawesome/font-awesome": "v4.2.0",
+	"mdmsoft/yii2-admin": "~2.0",
+    "2amigos/yii2-date-picker-widget" : "~1.0",
+    "2amigos/yii2-date-time-picker-widget" : "~1.0"
   },
   "require-dev": {
     "yiisoft/yii2-codeception": "*",

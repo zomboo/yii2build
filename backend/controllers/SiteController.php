@@ -42,39 +42,39 @@ class SiteController extends Controller
         ];
     }*/
     public function behaviors()
-{
-return [
-'access' => [
-'class' => AccessControl :: className(),
-'rules' => [
-[
-'actions' => [ 'login' , 'error' ],
-'allow' => true,
-],
-[
-'actions' => [ 'index' ],
-'allow' => true,
-'roles' => [ '@' ],
-'matchCallback' => function ( $rule, $action) {
-return PermissionHelpers:: requireMinimumRole( 'Admin' )
-&& PermissionHelpers:: requireStatus( 'Active' );
-}
-],
-[
-'actions' => [ 'logout' ],
-'allow' => true,
-'roles' => [ '@' ],
-],
-],
-],
-'verbs' => [
-'class' => VerbFilter:: className(),
-'actions' => [
-'logout' => [ 'get' , 'post' ],
-],
-],
-];
-}
+    {
+        return [
+            'access' => [
+                'class' => AccessControl:: className(),
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return PermissionHelpers:: requireMinimumRole('Admin')
+                            && PermissionHelpers:: requireStatus('Active');
+                        }
+                    ],
+                    [
+                        'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter:: className(),
+                'actions' => [
+                    'logout' => ['get', 'post'],
+                ],
+            ],
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -101,7 +101,7 @@ return PermissionHelpers:: requireMinimumRole( 'Admin' )
 
         $model = new LoginForm();
         //if ($model->load(Yii::$app->request->post()) && $model->login()) {
-        if ( $model -> load(Yii :: $app-> request-> post()) && $model -> loginAdmin()) {
+        if ($model->load(Yii:: $app->request->post()) && $model->loginAdmin()) {
             return $this->goBack();
         } else {
             return $this->render('login', [

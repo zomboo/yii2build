@@ -40,8 +40,9 @@ FontAwesomeAsset::register($this);
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => '预订', 'url' => ['/z-orderuser/create']],
     ];
-    
+
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -54,7 +55,7 @@ FontAwesomeAsset::register($this);
             )
             . Html::endForm()
             . '</li>';
-        $menuItems[] = [ 'label' => 'Profile' , 'url' => [ '/profile/view' ]];
+        $menuItems[] = ['label' => 'Profile', 'url' => ['/profile/view']];
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],

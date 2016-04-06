@@ -15,52 +15,52 @@ use common\models\PermissionHelpers;
  */
 class UserController extends Controller
 {
-   /* public function behaviors()
+    /* public function behaviors()
+     {
+         return [
+             'verbs' => [
+                 'class' => VerbFilter::className(),
+                 'actions' => [
+                     'delete' => ['post'],
+                 ],
+             ],
+         ];
+     }*/
+    public function behaviors()
     {
         return [
+            'access' => [
+                'class' => \yii\filters\AccessControl:: className(),
+                'only' => ['index', 'view', 'create', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view',],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return PermissionHelpers:: requireMinimumRole('Admin')
+                            && PermissionHelpers:: requireStatus('Active');
+                        }
+                    ],
+                    [
+                        'actions' => ['update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return PermissionHelpers:: requireMinimumRole('SuperUser')
+                            && PermissionHelpers:: requireStatus('Active');
+                        }
+                    ],
+                ],
+            ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter:: className(),
                 'actions' => [
                     'delete' => ['post'],
                 ],
             ],
         ];
-    }*/
-    public function behaviors()
-{
-return [
-'access' => [
-'class' => \yii\filters\AccessControl :: className(),
-'only' => [ 'index' , 'view' , 'create' , 'update' , 'delete' ],
-'rules' => [
-[
-'actions' => [ 'index' , 'view' ,],
-'allow' => true,
-'roles' => [ '@' ],
-'matchCallback' => function ( $rule, $action) {
-return PermissionHelpers:: requireMinimumRole( 'Admin' )
-&& PermissionHelpers:: requireStatus( 'Active' );
-}
-],
-[
-'actions' => [ 'update' , 'delete' ],
-'allow' => true,
-'roles' => [ '@' ],
-'matchCallback' => function ( $rule, $action) {
-return PermissionHelpers:: requireMinimumRole( 'SuperUser' )
-&& PermissionHelpers:: requireStatus( 'Active' );
-}
-],
-],
-],
-'verbs' => [
-'class' => VerbFilter:: className(),
-'actions' => [
-'delete' => [ 'post' ],
-],
-],
-];
-}
+    }
 
     /**
      * Lists all user models.
