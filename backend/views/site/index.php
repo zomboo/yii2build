@@ -27,7 +27,7 @@ $is_admin = ValueHelpers:: getRoleValue('Admin');
                     ['class' => 'btn btn-lg btn-success']);
             }
             //Japanese
-            //Yii::$app->language = 'jp';
+            Yii::$app->language = 'zh';
             echo Yii::t('backend', 'Hello World');
             echo Yii::t('frontend', 'Hello World');
             ?>
