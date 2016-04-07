@@ -16,6 +16,10 @@ $is_admin = ValueHelpers:: getRoleValue('Admin');
             Now you can manage users, roles, and more with
             our easy tools.
         </p>
+        <?= Html::beginForm() ?>
+        <?= Html::dropDownList('language', Yii::$app->language, ['en-US' => 'English', 'zh-CN' => '中文', 'jp-JP' => '日本语' ]) ?>
+        <?= Html::submitButton('Change') ?>
+        <?= Html::endForm() ?>
         <p>
             <?php
             if (!Yii:: $app->user->isGuest
@@ -27,11 +31,15 @@ $is_admin = ValueHelpers:: getRoleValue('Admin');
                     ['class' => 'btn btn-lg btn-success']);
             }
             //Japanese
-            Yii::$app->language = 'zh';
+            //Yii::$app->language = 'zh';
+           // $supportedLanguages = ['en', 'ru','zh'];
+            //$languages = Yii::$app->request->getPreferredLanguage($supportedLanguages);
             echo Yii::t('backend', 'Hello World');
             echo Yii::t('frontend', 'Hello World');
+
             ?>
         </p>
+
     </div>
     <div class="body-content">
         <div class="row">
