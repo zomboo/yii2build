@@ -23,6 +23,15 @@ return [
         ],
         'i18n' => [
             'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\DbMessageSource',
+                    //'basePath' => '@common/messages', // if advanced application, set @frontend/messages
+                    'sourceLanguage' => 'en',
+                    /*'fileMap' => [
+                        'frontend' => 'frontend.php',
+                        'frontend/error' => 'error.php',
+                    ],*/
+                ],
                 'frontend*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@common/messages', // if advanced application, set @frontend/messages

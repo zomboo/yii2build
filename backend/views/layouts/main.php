@@ -80,7 +80,11 @@ FontAwesomeAsset:: register($this);
     </div>
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; Build <?= date('Y') ?> </p>
+            <p class="pull-left">&copy; Build <?= date('Y') ?>
+                <?= Html::beginForm() ?>
+                <?= Html::dropDownList('language', Yii::$app->language, ['en-US' => 'English', 'zh-CN' => '中文', 'jp-JP' => '日本语' ]) ?>
+                <?= Html::submitButton('Change') ?>
+                <?= Html::endForm() ?> </p>
             <!--<p class="pull-right"> <?= Yii:: powered() ?> </p>-->
         </div>
     </footer>
